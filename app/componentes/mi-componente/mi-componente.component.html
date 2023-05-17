@@ -9,7 +9,7 @@
     <li *ngFor="let bebida of Bebidas" >{{bebida}}</li>
 
   </ul>
-  <ul *ngIf="ano<=2005 && ano>1900" >
+  <ul *ngIf="ano<=2005 && ano>1900 && (dia>0&&dia<32) && (mes>0&&mes<13)" >
     <h2>Bebidas sin alcohol</h2>
     <li *ngFor="let bebida of Bebidas" >{{bebida}}</li>
     <h2>Bebidas con alcohol</h2>
