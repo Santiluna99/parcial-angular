@@ -1,18 +1,28 @@
 <p>Ingrese fecha de nacimiento</p>
-<b>DD/MM/YYYY </b>
+<b>En formato DD/MM/YYYY </b>
 <input  type="number" class="input-diminuto" [(ngModel)]="dia" placeholder="DD">
 <input type="number" class="input-diminuto" [(ngModel)]="mes" placeholder="MM">
 <input type="number" class="input-diminuto" [(ngModel)]="ano" placeholder="YYYY">
-
-  <ul *ngIf="ano>2005" >
+<div>
+  <!-- <ul *ngIf="ano>2005 else menores" >
     <h2>Bebidas sin alcohol</h2>
     <li *ngFor="let bebida of Bebidas" >{{bebida}}</li>
-
-  </ul>
-  <ul *ngIf="ano<=2005 && ano>1900 && (dia>0&&dia<32) && (mes>0&&mes<13)" >
+  </ul> -->
+  <ul *ngIf="ano<=2005 && ano>1900 && (dia>0&&dia<32) && (mes>0&&mes<13) else menores">
     <h2>Bebidas sin alcohol</h2>
     <li *ngFor="let bebida of Bebidas" >{{bebida}}</li>
     <h2>Bebidas con alcohol</h2>
     <li *ngFor="let bebida of BebidasCA" >{{bebida}}</li>
+
   </ul>
+  <ng-template #menores>
+    <ul *ngIf="ano>2005 else invalida" >
+      <h2>Bebidas sin alcohol</h2>
+      <li *ngFor="let bebida of Bebidas" >{{bebida}}</li>
+    </ul>
+  </ng-template>
+  <ng-template #invalida>
+    <p>Fecha Invalida</p>
+  </ng-template>
+</div>
 
